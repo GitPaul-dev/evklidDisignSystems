@@ -1,8 +1,8 @@
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat-Bold"), local("MontserratBold"),
-      url("../fonts/Montserrat-Bold.woff2") format("woff2"),
-      url("../fonts/Montserrat-Bold.woff") format("woff");
+    url("../fonts/Montserrat-Bold.woff2") format("woff2"),
+    url("../fonts/Montserrat-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -11,8 +11,8 @@
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat-Regular"), local("MontserratRegular"),
-      url("../fonts/Montserrat-Regular.woff2") format("woff2"),
-      url("../fonts/Montserrat-Regular.woff") format("woff");
+    url("../fonts/Montserrat-Regular.woff2") format("woff2"),
+    url("../fonts/Montserrat-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -21,8 +21,8 @@
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat-SemiBold"), local("MontserratSemiBold"),
-      url("../fonts/Montserrat-SemiBold.woff2") format("woff2"),
-      url("../fonts/Montserrat-SemiBold.woff") format("woff");
+    url("../fonts/Montserrat-SemiBold.woff2") format("woff2"),
+    url("../fonts/Montserrat-SemiBold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -31,8 +31,8 @@
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat-ExtraBold"), local("MontserratExtraBold"),
-      url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"),
-      url("../fonts/Montserrat-ExtraBold.woff") format("woff");
+    url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"),
+    url("../fonts/Montserrat-ExtraBold.woff") format("woff");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -41,23 +41,24 @@
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat-Medium"), local("MontserratMedium"),
-      url("../fonts/Montserrat-Medium.woff2") format("woff2"),
-      url("../fonts/Montserrat-Medium.woff") format("woff");
+    url("../fonts/Montserrat-Medium.woff2") format("woff2"),
+    url("../fonts/Montserrat-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 html {
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 *,
 *::before,
 *::after {
-	-webkit-box-sizing: inherit;
-	        box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 :root {
@@ -75,17 +76,18 @@ html {
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 .body {
   font-family: "Montserrat", sans-serif;
   background: var(--white);
+  overflow-x: hidden;
 }
 
 .decor-reset {
@@ -127,7 +129,8 @@ img {
   font-size: 0;
 }
 
-.header, .footer {
+.header,
+.footer {
   width: 100%;
 }
 
@@ -325,21 +328,34 @@ img {
   stroke: var(--orange);
 }
 
+.search-btn--active {
+  visibility: hidden;
+}
+
 .header__form {
   position: absolute;
   right: 20px;
+  z-index: 2;
   padding: 16px 13px 16px 32px;
   border-radius: 24px;
   background: var(--white);
   -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
-  visibility: hidden;
+  opacity: 0;
+  transform: translateX(110%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.header__form.header__form--active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .header__input {
   border: none;
   border-bottom: 1px solid var(--light-gray);
-  margin-right: 58px;
+  margin-right: 46px;
   width: 412px;
   outline: none;
 }
@@ -379,6 +395,77 @@ img {
   color: var(--light-gray);
 }
 
+.form-btn {
+  position: relative;
+  z-index: 2;
+  margin-right: 12px;
+}
+
+.form-btn__svg {
+  stroke: var(--light-gray);
+  -webkit-transition: fill 0.4s ease-in-out, stroke 0.4s ease-in-out;
+  -o-transition: fill 0.4s ease-in-out, stroke 0.4s ease-in-out;
+  transition: fill 0.4s ease-in-out, stroke 0.4s ease-in-out;
+}
+
+.form-btn:focus {
+  outline: none;
+}
+
+.form-btn:focus .form-btn__svg {
+  stroke: var(--orange);
+}
+
+.form-btn:hover .form-btn__svg {
+  stroke: var(--orange);
+}
+
+.form-btn:active .form-btn__svg {
+  stroke: var(--orange);
+}
+
+.form-btn--active {
+  visibility: hidden;
+}
+
+.close-btn rect {
+  fill: var(--light-gray);
+  transition: fill 0.3s ease-in-out;
+}
+
+.close-btn circle {
+  stroke: var(--light-gray);
+  transition: stroke 0.3s ease-in-out;
+}
+
+.close-btn:focus {
+  outline: none;
+}
+
+.close-btn:focus rect {
+  fill: var(--light-orange);
+}
+
+.close-btn:focus circle {
+  stroke: var(--light-orange);
+}
+
+.close-btn:hover rect {
+  fill: var(--light-orange);
+}
+
+.close-btn:hover circle {
+  stroke: var(--light-orange);
+}
+
+.close-btn:active rect {
+  fill: var(--dark-orange);
+}
+
+.close-btn:active circle {
+  stroke: var(--dark-orange);
+}
+
 /* main */
 
 .main {
@@ -404,17 +491,21 @@ img {
   pointer-events: auto;
 }
 
-.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
   bottom: 28px;
 }
 
-.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
   margin: 0 10px;
 }
 
 .swiper-pagination-bullet {
-  width: var(--swiper-pagination-bullet-width,var(--swiper-pagination-bullet-size,15px));
-  height: var(--swiper-pagination-bullet-height,var(--swiper-pagination-bullet-size,15px));
+  width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 15px));
+  height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 15px));
   background-color: var(--light-gray);
   opacity: 1;
 }
@@ -428,7 +519,8 @@ img {
   height: 100%;
 }
 
-.swiper__img-1024, .swiper__img-768 {
+.swiper__img-1024,
+.swiper__img-768 {
   display: none;
 }
 
