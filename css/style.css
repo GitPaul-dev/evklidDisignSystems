@@ -401,6 +401,10 @@ img {
   margin-right: 12px;
 }
 
+.form-btn--active {
+  visibility: hidden;
+}
+
 .form-btn__svg {
   stroke: var(--light-gray);
   -webkit-transition: fill 0.4s ease-in-out, stroke 0.4s ease-in-out;
@@ -422,10 +426,6 @@ img {
 
 .form-btn:active .form-btn__svg {
   stroke: var(--orange);
-}
-
-.form-btn--active {
-  visibility: hidden;
 }
 
 .close-btn rect {
